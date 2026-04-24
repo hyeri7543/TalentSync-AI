@@ -1,0 +1,188 @@
+openapi: 3.1.0
+info:
+  # Do not change the title, if the title changes, the import paths will be broken
+  title: Api
+  version: 0.1.0
+  description: API specification
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: tasks
+    description: Task operations
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      description: Returns server health status
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+  /tasks:
+    get:
+      operationId: getTasks
+      tags: [tasks]
+      summary: List all tasks
+      description: Returns all tasks ordered by id
+      responses:
+        "200":
+          description: List of tasks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Task"
+    post:
+      operationId: createTask
+      tags: [tasks]
+      summary: Create a task
+      description: Creates a new task and returns it
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                externalId:
+                  type: string
+                  minLength: 1
+                title:
+                  type: string
+                  minLength: 1
+                description:
+                  type: string
+                category:
+                  type: string
+                  minLength: 1
+                timeEstimate:
+                  type: string
+                difficulty:
+                  type: string
+                status:
+                  $ref: "#/components/schemas/TaskStatus"
+              required:
+                - externalId
+                - title
+                - category
+      responses:
+        "201":
+          description: Created task
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Task"
+        "400":
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+  /tasks/{id}:
+    patch:
+      operationId: patchTask
+      tags: [tasks]
+      summary: Update task status
+      description: Updates the status of a task by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  $ref: "#/components/schemas/TaskStatus"
+              required:
+                - status
+      responses:
+        "200":
+          description: Updated task
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Task"
+        "400":
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+        "404":
+          description: Task not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+    TaskStatus:
+      type: string
+      enum:
+        - todo
+        - in_progress
+        - done
+    Task:
+      type: object
+      properties:
+        id:
+          type: integer
+        externalId:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+        timeEstimate:
+          type: string
+        difficulty:
+          type: string
+        status:
+          $ref: "#/components/schemas/TaskStatus"
+      required:
+        - id
+        - externalId
+        - title
+        - description
+        - category
+        - timeEstimate
+        - difficulty
+        - status
+    ValidationError:
+      type: object
+      properties:
+        error:
+          type: object
+      required:
+        - error
+    NotFoundError:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+        - error
