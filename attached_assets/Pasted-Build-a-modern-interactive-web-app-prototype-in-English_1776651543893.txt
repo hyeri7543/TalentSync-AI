@@ -1,0 +1,109 @@
+Build a modern interactive web app prototype in English for my project.
+
+Project title:
+AI Interview Learning and Talent Matching Platform
+
+Goal:
+Create a realistic, presentation-ready prototype that looks like a real product, not just a static flowchart. The app should simulate how students and companies use an AI-powered platform for interview preparation, task assignment, skill development, and evaluation.
+
+Design requirements:
+- Clean, modern, professional UI
+- Soft blue, teal, white, and light yellow color palette
+- Fully in English
+- Responsive for desktop and mobile
+- Use rounded cards, soft shadows, icons, and neat spacing
+- Make it look like a startup product prototype
+- Use a sidebar or top navigation for different sections
+- Add smooth transitions or simple animations if possible
+
+App structure:
+1. Home
+2. Student Portal
+3. Company Portal
+4. AI Center
+5. Reports Dashboard
+
+Page details:
+
+1. Home Page
+Include:
+- Project title
+- Short overview of the platform
+- A visual overview showing Student Side, Company Side, AI Engine, and Reports
+- Two main buttons: “Enter Student Portal” and “Enter Company Portal”
+
+2. Student Portal
+Include a realistic interactive interface where a student can:
+- Enter target company
+- Enter target role
+- Enter current skills
+- Upload resume (mock upload UI only)
+- Click a button like “Generate Learning Plan”
+
+After clicking, show:
+- AI Skill Gap Analysis
+- Personalized Learning Path
+- Task Categories:
+  - Learning Tasks
+  - Practical Tasks
+  - Interview Tasks
+- Progress Tracker:
+  - Daily Progress
+  - Current Stage
+  - Next Recommended Step
+- Mock Interview Section:
+  - AI-generated interview questions
+  - Answer input box
+  - Feedback and score panel
+
+3. Company Portal
+Include an interface where a company can:
+- Enter company name
+- Enter job title
+- Enter job requirements
+- Enter required skills
+- Click “Generate Task Template”
+
+After clicking, show:
+- AI-generated task template
+- Editable task list
+- Student performance review section
+- Candidate progress overview
+- Evaluation panel with:
+  - Score
+  - Comments
+  - Suggestions
+
+4. AI Center
+Create a central AI module page that explains the AI system functions with interactive cards:
+- Skill Gap Analysis
+- Task Matching
+- Personalized Plan Generation
+- Interview Question Generation
+- Scoring and Feedback
+- Performance Analysis
+
+5. Reports Dashboard
+Create a dashboard-style page showing:
+- Learning Report
+- Task Completion Report
+- Mock Interview Report
+- Progress Summary
+- Cloud Data Storage status
+- Shared access for both students and companies
+
+Extra interactive features:
+- Use sample/mock data so the prototype feels real
+- Add tabs or accordions where useful
+- Include a progress bar for student journey
+- Include a hiring workflow summary for company side
+- Add buttons and form interactions, even if the data is simulated
+- Make the app visually polished enough for a university project presentation
+
+Technical requirements:
+- Build as a single-page React app or a clean multi-section frontend app
+- Use reusable components
+- Keep the code organized and easy to edit
+- Use English text only
+- Do not use placeholder gibberish
+- Make everything readable and presentation-friendly

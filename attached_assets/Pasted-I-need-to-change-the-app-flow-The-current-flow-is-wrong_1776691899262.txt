@@ -1,0 +1,59 @@
+I need to change the app flow. The current flow is wrong.
+
+Please rebuild the user flow to match this exact logic:
+
+1. Landing page
+- The first page should NOT directly enter the student dashboard.
+- It should be a clean role selection page with two large options:
+  - Student
+  - Company
+
+2. Role-based authentication
+- If the user clicks Student, go to the Student sign-in / sign-up flow.
+- If the user clicks Company, go to the Company sign-in / sign-up flow.
+- Do not send users directly into the dashboard before role selection.
+
+3. Student onboarding after login
+- After a Student logs in for the first time, do NOT immediately open the full student dashboard.
+- First show a student onboarding form to collect user profile information:
+  - gender
+  - age
+  - major
+  - target job / intended job
+  - any other basic profile fields needed
+
+4. Target company selection step
+- After the student profile form, show a required company selection step.
+- The student must choose the company they want to prepare for before entering the main student dashboard.
+- This can be a selectable list of companies plus an optional custom company field.
+
+5. Only after onboarding is completed
+- After the student completes:
+  - profile setup
+  - target company selection
+- then redirect them into the Student dashboard.
+
+6. Student dashboard
+- Once onboarding is complete, the student can access:
+  - Overview
+  - Profile
+  - Skill Gap Analysis
+  - Learning Path
+  - Tasks
+  - Mock Interview
+  - Reports
+
+7. Company flow
+- Keep Company as a separate role and separate dashboard flow.
+- Company users should not go through the student onboarding steps.
+
+Implementation requirements:
+- Use Clerk for authentication
+- Save the selected role for each user
+- Save student onboarding data in the database
+- Save the chosen target company in the database
+- Add route guards so incomplete student onboarding redirects to the onboarding flow instead of the dashboard
+- Remove any incorrect direct redirect into the student portal
+- Replace any remaining demo flow with this new flow
+
+Please first update the routing logic and page flow, then update the UI to match this structure.
