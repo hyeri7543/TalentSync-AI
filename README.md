@@ -45,4 +45,6 @@ This platform connects students and companies through a task-based system:
 
 ```bash
 pnpm install
-pnpm dev
+
+# run development server
+pnpm dev   # or check scripts in package.json
